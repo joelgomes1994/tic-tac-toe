@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/tile/tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/Background.png" type="Texture" id=2]
+[ext_resource path="res://scenes/game/game.gd" type="Script" id=3]
+
+[node name="Game" type="Node2D" groups=["Game"]]
+script = ExtResource( 3 )
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="AcceptDialog" type="AcceptDialog" parent="Hud"]
+margin_left = 0.890884
+margin_right = 90.8909
+margin_bottom = 58.0
+popup_exclusive = true
+window_title = "Finish!"
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="Tile1" parent="Tiles" instance=ExtResource( 1 )]
+position = Vector2( 180, 180 )
+
+[node name="Tile2" parent="Tiles" instance=ExtResource( 1 )]
+position = Vector2( 300, 180 )
+grid_column = 1
+
+[node name="Tile3" parent="Tiles" instance=ExtResource( 1 )]
+position = Vector2( 420, 180 )
+grid_column = 2
+
+[node name="Tile4" parent="Tiles" instance=ExtResource( 1 )]
+position = Vector2( 180, 300 )
+grid_row = 1
+
+[node name="Tile5" parent="Tiles" instance=ExtResource( 1 )]
+position = Vector2( 300, 300 )
+grid_row = 1
+grid_column = 1
+
+[node name="Tile6" parent="Tiles" instance=ExtResource( 1 )]
+position = Vector2( 420, 300 )
+grid_row = 1
+grid_column = 2
+
+[node name="Tile7" parent="Tiles" instance=ExtResource( 1 )]
+position = Vector2( 180, 420 )
+grid_row = 2
+
+[node name="Tile8" parent="Tiles" instance=ExtResource( 1 )]
+position = Vector2( 300, 420 )
+grid_row = 2
+grid_column = 1
+
+[node name="Tile9" parent="Tiles" instance=ExtResource( 1 )]
+position = Vector2( 420, 420 )
+grid_row = 2
+grid_column = 2
+
+[node name="Background" type="Sprite" parent="."]
+self_modulate = Color( 0.631373, 0.631373, 0.631373, 1 )
+position = Vector2( 300, 300 )
+scale = Vector2( 2.5, 2.5 )
+z_index = -1
+texture = ExtResource( 2 )
+
+[connection signal="confirmed" from="Hud/AcceptDialog" to="." method="_on_AcceptDialog_confirmed"]
